@@ -1,0 +1,34 @@
+package PracticalWorkshop;
+
+import java.io.*;
+
+public class SubString {
+
+	    public static void main(String[] args) throws IOException {
+	        
+	    	char [] Arraystring;
+	        char character;
+	        int accountant = 0;
+	        
+	        BufferedReader br= new BufferedReader(new InputStreamReader(System.in));
+	        BufferedWriter bw= new BufferedWriter(new OutputStreamWriter(System.out));
+	        
+	        String string = " "; 
+	        bw.write("Enter a phrase :   ");
+	        bw.flush();
+	        string = br.readLine();
+	        Arraystring = string.toCharArray();
+	        for (int i = 0; i<Arraystring.length; i++){
+	            character = Arraystring[i];
+	            for (int j = 0; j<Arraystring.length; j++){
+	                if(Arraystring [j] == character){
+	                accountant ++;    
+	                }
+	            }
+	            bw.write("\n"+Arraystring[i]+"  "+ accountant);
+	            bw.flush();
+	            accountant = 0;
+	        }
+	        
+	    }
+}
