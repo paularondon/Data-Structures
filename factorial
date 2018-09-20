@@ -1,0 +1,39 @@
+package PracticalWorkshop;
+
+import java.io.*; 
+
+  public class Factorial {
+	
+	  public static int fac(int n)
+	  {
+		  if (n < 0)		
+		  {
+			  return 0;
+		  }
+		  else
+		  {
+			  if (n == 0)	
+			  {
+				  return 1;
+			  }
+			  else				
+			  {				
+				  return n*fac(n-1);
+			}
+		}
+	}	
+		
+	public static void main (String[] args) throws IOException
+	{
+		BufferedReader br = new BufferedReader ( new InputStreamReader (System.in));
+		BufferedWriter bw = new BufferedWriter ( new OutputStreamWriter ( System.out ));
+		
+				bw.write("Enter number : ");
+				bw.flush();
+				int n = Integer.parseInt(br.readLine());
+				
+		new Factorial();
+		bw.write("The factorial of " + n + " is " + Factorial.fac(n));
+		bw.flush();
+	}	
+}
