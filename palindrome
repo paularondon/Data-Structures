@@ -1,0 +1,43 @@
+package PracticalWorkshop;
+
+import java.io.*;
+
+  public class palindrome 
+  {
+    public static void main(String[] args) 
+		 {
+		    BufferedReader br = new BufferedReader(new InputStreamReader (System.in));
+		    BufferedWriter bw = new BufferedWriter (new OutputStreamWriter (System.out));
+		
+		  try
+		  {
+		
+		    bw.write("Enter the string : ");
+		    bw.flush();
+		    
+        String c = br.readLine();
+		    StringBuffer cadena_a_buffer = new StringBuffer(c);
+		    StringBuffer na= cadena_a_buffer.reverse(); 
+
+		    StringBuffer sbuf = new StringBuffer(na); 
+		    String cadreversaenstring = sbuf.toString(); 
+
+		     bw.write(c + "\n");
+		     bw.flush();
+		     bw.write(cadreversaenstring);
+		     bw.flush();
+		
+		if(c.equals(cadreversaenstring)) 
+    { 
+      bw.write("\nSi es palindrome");
+		  bw.flush();
+    }
+    else 
+    {
+		  bw.write("\nno es palindrome");
+		  bw.flush();
+		}
+	}
+		catch (Exception ex) {}
+		}
+}
