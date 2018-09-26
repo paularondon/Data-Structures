@@ -2,42 +2,60 @@ package PracticalWorkshop;
 
 import java.io.*;
 
-  public class palindrome 
-  {
-    public static void main(String[] args) 
-		 {
-		    BufferedReader br = new BufferedReader(new InputStreamReader (System.in));
-		    BufferedWriter bw = new BufferedWriter (new OutputStreamWriter (System.out));
-		
-		  try
-		  {
-		
-		    bw.write("Enter the string : ");
-		    bw.flush();
-		    
-        String c = br.readLine();
-		    StringBuffer cadena_a_buffer = new StringBuffer(c);
-		    StringBuffer na= cadena_a_buffer.reverse(); 
+public class palindrome {
+	
+	static BufferedReader br = new BufferedReader (new InputStreamReader (System.in));
+	static BufferedWriter bw = new BufferedWriter (new OutputStreamWriter (System.out));
 
-		    StringBuffer sbuf = new StringBuffer(na); 
-		    String cadreversaenstring = sbuf.toString(); 
-
-		     bw.write(c + "\n");
-		     bw.flush();
-		     bw.write(cadreversaenstring);
-		     bw.flush();
+	public static int substring_occurences(String total, String sub)
+	{
+		int counter = 0;
 		
-		if(c.equals(cadreversaenstring)) 
-    { 
-      bw.write("\nSi es palindrome");
-		  bw.flush();
-    }
-    else 
-    {
-		  bw.write("\nno es palindrome");
-		  bw.flush();
-		}
+		for (int i = 0; i <= (total.length() - sub.length()); i++)
+			if (total.substring(i, i + sub.length()). equals(sub))
+				counter += 1;
+				
+		return counter;
 	}
-		catch (Exception ex) {}
+	
+	public static boolean palindrome(String input)
+	{
+		if (input.length() <= 1)
+			return true;
+		else
+			if (input.charAt(0) == input.charAt(input.length() - 1))
+				return palindrome (input.substring(1, input.length() - 1));
+			else
+				return false;
+	}
+	
+	public static boolean palindrome(String input, int indexA, int indexB)
+	{
+		if (indexB <= indexA)
+			return true;
+		else
+			if (input.charAt(indexA) == input.charAt(input.length() - 1))
+				return palindrome(input.substring(1, input.length() - 1));
+			else
+				return false;	
+	}
+	
+		public static void main (String[] args)
+		{
+			
+			String input;
+			
+			try
+			{
+				
+				bw.write("Ingrese una frase : ");
+				bw.flush();
+				input = br.readLine();
+				input = input.replace(" ", "");
+				
+				bw.write("\nResultado 1: " + palindrome(input));
+				bw.flush();
+			}
+			catch (Exception ex) {}
 		}
 }
