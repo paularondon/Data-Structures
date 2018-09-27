@@ -1,0 +1,45 @@
+package PracticalWorkshop;
+
+import java.io.*;
+
+public class Anagram {
+	
+	static BufferedReader br = new BufferedReader (new InputStreamReader (System.in));
+	static BufferedWriter bw = new BufferedWriter (new OutputStreamWriter (System.out));
+	
+
+	public static void imprimeAnagramas(String a, String x) throws IOException {
+		if (x.length() <= 1) {
+			bw.write(a + x);
+			bw.flush();
+		} else {
+			for (int i = 0; i < x.length(); i++) {
+				String b = x.substring(i, i + 1);
+				String before	 = x.substring(0, i); 
+				String after = x.substring(i + 1); 
+				imprimeAnagramas(a + b, before + after);
+			
+			}
+	
+	}
+}
+
+	public static void main (String[] args) 
+	{
+		{
+			String x;
+			
+			try
+			{
+				bw.write("Enter a phrase : ");
+				bw.flush();
+				x = br.readLine();
+						
+				imprimeAnagramas("\n  ", x);
+			
+			}
+		catch (Exception ex) {}
+	}
+}
+}
+
