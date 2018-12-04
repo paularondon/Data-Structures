@@ -1,49 +1,87 @@
-package PracticalWorkshop;
+package Projects;
 
 import java.io.*;
 
-public class Crypto {
+public class Encryptor {
 
-	public static void main (String [] args) throws IOException
-	{
-		
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-	    BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+		public static void main (String [] args) throws IOException
+		{
+			
+			//Create buffered
+			
+			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		    BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-	    bw.write("Enter a phrase : ");
-	    bw.flush();
-	    String test = br.readLine();
-	    String c1 = "Encrypt: ";
-	    String c2 = "Decrypted : ";
+		    //read entry
+		    
+		    bw.write("Enter a phrase : ");
+		    bw.flush();
+		    String test = br.readLine();
+		    String c1 = "Encrypt: ";
+		    String c2 = "Decrypted : ";
 
-	    try
-	    {	
-	    test = test.toLowerCase();
-	    bw.write("Origial caracter : " + test + "\n");
-	    
-	    char array [] = test.toCharArray();
-	    	for (int i = 0; i < array.length; i++)
-	    	{
-	    		array[i] = (char)(array[i] + (char)1);
-	    	}
-	    	
-	    	String test1 = String.valueOf(array);
-	    	bw.write(c1 + "\n");
-	    	bw.write(test1 + "\n");	    
-	    	bw.flush();
-	    
-	    	char arrayD[] = test1.toCharArray();
-	    		for (int i = 0; i < arrayD.length; i++)
-	    		{
-	    			arrayD[i] = (char)(arrayD[i] - (char)1);
-	    		}	
-	    		
-	    		String test2 = String.valueOf(arrayD);
-	    		bw.write( c2 + "\n");
-	    		bw.write(test2 + "\n");
-	    		bw.flush();
-
-	    }
-	    catch (Exception ex) {}
- }
+		    try
+		    {	
+		    	
+		    	//convert the original sentence to LowerCase
+		    	
+		    test = test.toLowerCase();
+		    bw.write("Origial caracter : " + test + "\n");
+			   
+		    //Replace the vowels with numbers
+		    
+		    test = test.replace ("a" , "5");
+		    test = test.replace ("e" , "7");
+		    test = test.replace ("i" , "9");
+		    test = test.replace ("o" , "1");
+		    test = test.replace ("u" , "3");
+		    
+		    //Create an arrangement for the phrase
+		    
+		    char array [] = test.toCharArray();
+		    
+		    //for is created to read the entire arrangement
+		    
+		    	for (int i = 0; i < array.length; i++)
+		    	{
+		    		array[i] = (char)(array[i] + (char)1);
+		    	}
+		    	
+		    	//The value is returned.
+		    	
+		    	String test1 = String.valueOf(array);
+		    	bw.write(c1 + "\n");
+		    	bw.write(test1 + "\n");	    
+		    	bw.flush();
+		    
+		    	//Create an array for the encrypted phrase
+		    	
+		    	char arrayD[] = test1.toCharArray();
+		    	
+		    	//for is created to read the entire arrangement
+		    		for (int i = 0; i < arrayD.length; i++)
+		    		{
+		    			arrayD[i] = (char)(arrayD[i] - (char)1);
+		    		}	
+		    		
+		    	//The value is returned.
+		    		
+		    		String test2 = String.valueOf(arrayD);
+		    		bw.write( c2 + "\n");
+		    		bw.write(test2 + "\n");
+		    		bw.flush();
+		    		
+		    	//The numbers are replaced by letters.	
+		    		
+		    	    test2 = test2.replace ("5" , "a");
+		    	    test2 = test2.replace ("7" , "e");
+		    	    test2 = test2.replace ("9" , "i");
+		    	    test2 = test2.replace ("1" , "o");
+		    	    test2 = test2.replace ("3" , "u");
+		    		
+		    	    bw.write(test2);
+		    	    bw.flush();
+		    }
+		    catch (Exception ex) {}
+	}
 }
